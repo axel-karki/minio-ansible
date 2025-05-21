@@ -1,0 +1,30 @@
+- name: Ensure data directory exists
+  file:
+    path: "{{ minio_data_dir }}"
+    state: directory
+    owner: minio-user
+    group: minio-user
+    mode: '0755'
+
+- name: Download official MinIO .deb package
+  get_url:
+    url: "{{ minio_deb_url }}"
+    dest: "{{ minio_deb_file }}"
+
+- name: Install MinIO using dpkg
+  apt:
+    deb: "{{ minio_deb_file }}"
+
+- name: Configure MinIO environment variables
+  copy:
+    dest: /etc/default/minio
+    content: |
+      MINIO_VOLUMES="{{ minio_data_dir }}"
+      MINIO_ROOT_USER="{{ minio_access_key }}"
+      MINIO_ROOT_PASSWORD="{{ minio_secret_key }}"
+
+- name: Reload and restart MinIO service
+  systemd:
+    name: minio
+    enabled: yes
+    state: restarted
