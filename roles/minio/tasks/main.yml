@@ -1,9 +1,23 @@
+- name: Ensure MinIO group exists
+  group:
+    name: "{{ minio_group }}"
+    system: yes
+
+- name: Ensure MinIO user exists
+  user:
+    name: "{{ minio_user }}"
+    group: "{{ minio_group }}"
+    system: yes
+    shell: /usr/sbin/nologin
+    home: "{{ minio_data_dir }}"
+    create_home: no
+
 - name: Ensure data directory exists
   file:
     path: "{{ minio_data_dir }}"
     state: directory
-    owner: minio-user
-    group: minio-user
+    owner: "{{ minio_user }}"
+    group: "{{ minio_group }}"
     mode: '0755'
 
 - name: Download official MinIO .deb package
@@ -23,8 +37,9 @@
       MINIO_ROOT_USER="{{ minio_access_key }}"
       MINIO_ROOT_PASSWORD="{{ minio_secret_key }}"
 
-- name: Reload and restart MinIO service
+- name: Reload and start MinIO service
   systemd:
+    daemon_reload: yes
     name: minio
     enabled: yes
     state: restarted
