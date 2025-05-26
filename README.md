@@ -84,7 +84,7 @@ After installation:
    ssh -i <ssh_file_path> -L 8080:<minio_vm_private_ip>:38773 root@<server_public_ip>
    ```
    <img width="919" alt="Screenshot 2025-05-26 at 6 56 48 AM" src="https://github.com/user-attachments/assets/b80f68b5-75af-4fd8-aad9-a66cb23757c4" />
-   <img width="978" alt="Screenshot 2025-05-26 at 6 57 30 AM" src="https://github.com/user-attachments/
+<img width="977" alt="Screenshot 2025-05-26 at 6 59 31 AM" src="https://github.com/user-attachments/assets/aff77cc6-1537-455a-8b46-5c7bb9a4a580" />
    <img width="978" alt="Screenshot 2025-05-26 at 6 57 47 AM" src="https://github.com/user-attachments/assets/07b24838-9eee-4b46-86f7-ca9a05dcffaf" />
 assets/91cdbb64-6a6b-4b34-8fee-804d5b6fa749" />
    <img width="973" alt="Screenshot 2025-05-26 at 6 58 08 AM" src="https://github.com/user-attachments/assets/eefc42e3-a16c-4727-b502-4e3a68b6959e" />
