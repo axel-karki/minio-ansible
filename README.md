@@ -80,8 +80,12 @@ After installation:
 4. The backup was successfully listed and verified in the MinIO UI under the configured bucket.
 
 5. UI:
+   UI Port:
    ```
-   ssh -i <ssh_file_path> -L 8080:<minio_vm_private_ip>:38773 root@<server_public_ip>
+   ss -tulnp | grep minio
+   ```
+   ```
+   ssh -i <ssh_file_path> -L 8080:<minio_vm_private_ip>:<UI_port> root@<server_public_ip>
    ```
    <img width="719" alt="Screenshot 2025-05-26 at 6 56 48 AM" src="https://github.com/user-attachments/assets/b80f68b5-75af-4fd8-aad9-a66cb23757c4" />
 <img width="777" alt="Screenshot 2025-05-26 at 6 59 31 AM" src="https://github.com/user-attachments/assets/aff77cc6-1537-455a-8b46-5c7bb9a4a580" />
